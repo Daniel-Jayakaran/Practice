@@ -1,8 +1,8 @@
 import requests
 import json
 
-OLLAMA_URL = "http://localhost:11434/api/generate" # ✅ match exactly with your LLM model Local Host Api URL
-MODEL_NAME = "llama3.2"  # ✅ match exactly with your Ollama model name
+OLLAMA_URL = "http://localhost:11434/api/generate" # match exactly with your LLM model Local Host Api URL
+MODEL_NAME = "llama3.2"  # match exactly with your Ollama model name
 
 def call_llama(prompt: str, max_tokens: int = 512) -> str:
     payload = {
