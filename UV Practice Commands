@@ -1,0 +1,9 @@
+🖥️ Commands Used:
+1.uv run uv_demo --python 3.10 
+2. uv init .
+3. uv init --script uv_demo.py --python 3.10
+4. uv add --script uv_demo.py "rich"
+5. uv add rich
+6. uv add tensorflow
+7. uv remove tensorflow
+7. uv run uv_demo --with rich
