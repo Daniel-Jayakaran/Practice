@@ -20,4 +20,29 @@ public class StudentService {
     public void addStudent(Student student) {
         studentRepo.save(student);
     }
+
+    public Student getStdByRno(int rno) {
+//        return studentRepo.findById(rno).orElseThrow(RuntimeException::new);
+         return studentRepo.findById(rno).orElse(null); // Adding Response Entity
+    }
+
+    public void updateStudent(Student student) {
+        studentRepo.save(student);
+    }
+
+    public void clearStudents() {
+        studentRepo.deleteAll();
+    }
+
+    public void deleteStudentByRno(int rno) {
+        studentRepo.deleteById(rno);
+    }
+
+    public List<Student> getStudentByTechnology(String tech) {
+        return studentRepo.findByTechnology(tech);
+    }
+
+    public List<Student> getStudentByGenderAndTechnology(String gender, String technology) {
+        return studentRepo.findByGenderAndTechnology(gender, technology);
+    }
 }
