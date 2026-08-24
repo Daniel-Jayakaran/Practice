@@ -1,0 +1,10 @@
+Library Management System Developed in Java and used Phpadmin XMAP DB; Outputs:
+![LibManagementDBOP1](libDB1.png)
+![LibManagementDBOP2](libDB2.png)
+![LibManagementDBOP3](libDB3.png)
+![LibManagementDBOP4](libDB4.png)
+![LibMOP1](libmOP1.png)
+![LibMOP1](libmOP2.png)
+![LibMOP1](libmOP3.png)
+![LibMOP1](libmOP4.png)
+![LibMOP1](libmOP5.png)
