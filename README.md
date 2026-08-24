@@ -1,2 +1,2 @@
-# Practice-Springboot
-This Repository Consists files that i practice to learn and master springboot
+# Practice
+This Repository Consists files that i practice to learn and master Tech Stack or Programming Concepts...
