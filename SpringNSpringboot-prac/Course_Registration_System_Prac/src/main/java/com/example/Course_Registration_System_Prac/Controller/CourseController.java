@@ -4,14 +4,12 @@ import com.example.Course_Registration_System_Prac.Model.Course;
 import com.example.Course_Registration_System_Prac.Model.CourseRegistry;
 import com.example.Course_Registration_System_Prac.Service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class CourseController {
 
     @Autowired

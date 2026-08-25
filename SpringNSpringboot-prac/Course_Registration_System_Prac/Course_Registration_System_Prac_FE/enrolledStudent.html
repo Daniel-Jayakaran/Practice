@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration System</title>
+    <script src="courseAssist.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+            background-color: #fefcfc;
+
+        }
+
+        h2 {
+            color: rgb(245, 197, 133);
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 5.7vh;
+        }
+
+        table {
+            font-size: 3vh;
+            font-family: Arial, Helvetica, sans-serif;
+            outline: none
+        }
+
+        th {
+            padding: 2vh;
+        }
+
+        td {
+            background-color: rgb(254, 245, 233);
+            padding: 2vh
+        }
+    </style>
+</head>
+<body>
+    <h2>Enrolled Students List</h2>
+    <table align="center">
+        <tr align="center" style="background-color: bisque;">
+            <th width="150">rno</th>
+            <th width="350">Name</th>
+            <th width="350">Email</th>
+            <th width="350">Course Name</th>
+        </tr>
+        <!-- Available Courses Data will be inserted Dynamically from DB Later -->
+        <tbody id="enrolledStudentsTBody" align="center"></tbody>
+    </table>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            showEnrolledStudents();
+        }  
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>Course Registration System</title>
+        <style>
+        button {
+            font-size: 3vh;
+            background-color: bisque;
+            color: #656464;
+            padding: 3vh 4.5vh;
+            border-radius: 4vh;
+            border: 1px solid #5e5c5c;
+            box-shadow: 20px #000000;
+            width: 100%;
+            max-width: 50vh;
+            margin-top: 2vh;
+        }
+
+        button:hover {
+            background-color: rgb(252, 221, 184);
+            cursor: pointer;
+            scale: 1.001;
+        }
+        
+        body {
+            diplay: flex;
+            justify-items: center;
+            align-items: center;
+            margin: 10vh auto;
+            font-family : Arial, sans-serif;
+            font-size: 3.4vh;
+            background-color: #fefcfc;
+            text-align: center;
+        }
+
+        h2 {
+            color: rgb(245, 197, 133);
+            margin-top: 1vh
+        }
+
+        label {
+            color: #545454;
+            margin: 1vh;
+            font-size: 3.2vh;
+        }
+
+        input {
+            padding: 2vh 2vh;
+            border-radius: 2.4vh;
+            border: 0.28vh solid #a3a3a3;
+            width: 101%;
+            box-sizing: border-box;
+            font-size: 2.25vh;
+        }
+
+        input:focus,
+        select:focus {
+            border : 0.28vh solid #7f7f7f;
+            outline: none;
+        }
+
+        select {
+            padding: 2vh 2vh;
+            border-radius: 2.4vh;
+            border: 0.28vh solid #a3a3a3;
+            width: 101%;
+            box-sizing: border-box;
+            font-size: 2.25vh;
+            apperance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23545454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 2vh center; /* Positions the custom arrow */
+            background-size: 2vh;
+
+        }
+
+        /* Styles the popup options menu */
+        option {
+        background-color: #ffeae3; /* Background color of dropdown items */
+        color: #545454;            /* Text color */
+        padding: 10px;             /* Works in some browsers, ignored in Chrome/Safari desktop */
+        }
+
+        option:hover,
+        option:checked {
+        background-color: #ffd0b6;
+        color: #000000;
+        }
+
+        .registerCourseForm {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(254, 245, 233);
+            padding: 5vh 7vh;
+            border: 0.3vh solid  rgb(254, 209, 150);
+            border-radius: 7vh;
+            max-width: 80vh;
+            justify-items: center;
+            align-items: center;
+            width: 22%
+        }
+    </style>
+    </head>
+    <body>
+        <h2>Register a Course</h2>
+        <form class="registerCourseForm" action="http://localhost:8080/courses/register" method="post">
+            <label for="NameInput">Enter Name:</label>
+            <input id="NameInput" type="text" name="Name">
+            <br>
+            <label for="emailInput">Enter Email:</label>
+            <input id="emailInput" type="text" name="email">
+            <br>
+            <label for="courseInput">Select a Course:</label>
+            <select name="courseName" id="courseInput">
+                <option value="AWS Cloud Basics">AWS Cloud Basics</option>
+                <option value="Cyber-Security">Cyber-Security</option>
+                <option value="Spring-boot Advanced...">Spring-boot Advanced...</option>
+            </select>
+            <br>
+            <button type="submit">Register Course</button>
+        </form>
+    </body>
+</html>
