@@ -1,15 +1,21 @@
 package com.example.SpringSecurityBasicsPrac.Configurations;
 
 
+import com.example.SpringSecurityBasicsPrac.Service.MyUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsPasswordService;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -25,6 +31,10 @@ public class SecurityConfig {
     // 1. CSRF DISABLE
     //         - SAME SITE STRICT
     //         - STATELESS SESSIONS
+
+    @Autowired
+    UserDetailsService userDetailsService;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(customizer -> customizer.disable())
@@ -36,38 +46,45 @@ public class SecurityConfig {
                                     .build();
     }
 
-
     @Bean
-    public UserDetailsService userDetailsService() {
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
+        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+        return provider;
+    }
 
-        List<UserDetails> users = new ArrayList<>();
 
-        UserDetails user1 = User.withDefaultPasswordEncoder()
-                                .username("Suman")
-                                    .password("212")
-                                        .roles("USER")
-                                            .build();
-
-        UserDetails user2 = User.withDefaultPasswordEncoder()
-                .username("Rajest")
-                .password("12")
-                .roles("USER")
-                .build();
-
-        UserDetails user3 = User.withDefaultPasswordEncoder()
-                .username("Kuja")
-                .password("111")
-                .roles("USER")
-                .build();
-
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//
+//        List<UserDetails> users = new ArrayList<>();
+//
+//        UserDetails user1 = User.withDefaultPasswordEncoder()
+//                                .username("Suman")
+//                                    .password("212")
+//                                        .roles("USER")
+//                                            .build();
+//
+//        UserDetails user2 = User.withDefaultPasswordEncoder()
+//                .username("Rajest")
+//                .password("12")
+//                .roles("USER")
+//                .build();
+//
+//        UserDetails user3 = User.withDefaultPasswordEncoder()
+//                .username("Kuja")
+//                .password("111")
+//                .roles("USER")
+//                .build();
+//
+//        users.add(user1);
+//        users.add(user2);
+//        users.add(user3);
 
 //      Collections
-        return new InMemoryUserDetailsManager(users);
+//        return new InMemoryUserDetailsManager(users);
 
 //        Var Args Methods
 //        return new InMemoryUserDetailsManager(user1, user2, user3);
-    }
+//    }
 }
