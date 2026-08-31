@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-    @GetMapping("/")
+    @GetMapping("/user/home")
     public String home(HttpServletRequest request) {
         return "Welcome to Home Page! - Session ID: " + request.getSession().getId() ;
     }
@@ -22,7 +22,7 @@ public class HelloController {
         return "Hello World!";
     }
 
-    @GetMapping("/about")
+    @GetMapping("/user/about")
     public String about() {
         return "Care to contact us, that why this about page exists!";
     }
