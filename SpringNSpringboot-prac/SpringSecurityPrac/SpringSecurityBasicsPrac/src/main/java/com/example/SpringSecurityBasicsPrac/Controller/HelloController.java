@@ -12,6 +12,11 @@ public class HelloController {
         return "Welcome to Home Page! - Session ID: " + request.getSession().getId() ;
     }
 
+    @GetMapping("/public/home")
+    public String homePage() {
+        return "Welcome to All Permitted Home Page";
+    }
+
     @GetMapping("/hello")
     public String hello() {
         return "Hello World!";
