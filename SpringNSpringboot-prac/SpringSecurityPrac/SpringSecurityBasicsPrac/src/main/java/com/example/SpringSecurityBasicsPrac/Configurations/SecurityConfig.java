@@ -40,7 +40,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(customizer -> customizer.disable())
                     .authorizeHttpRequests(request ->
-                                                                                    request.requestMatchers("/addUser").permitAll()
+                                                                                    request.requestMatchers("/admin/**").hasRole("ADMIN")
+                                                                                            .requestMatchers("/user/**").hasAnyRole("ADMIN", "USER")
+                                                                                            .requestMatchers("/public/**").permitAll()
                                                                                        .anyRequest().authenticated())
 //                        .formLogin(Customizer.withDefaults()) // remove or comment .formLogin while using STATELESS SESSION to avoid Continuous Login Issue
                             .httpBasic(Customizer.withDefaults())
