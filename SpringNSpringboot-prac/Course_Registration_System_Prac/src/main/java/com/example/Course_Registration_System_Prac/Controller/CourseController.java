@@ -15,21 +15,21 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
-    @GetMapping("/courses")
+    @GetMapping("/user/courses")
     public List<Course> availableCourses() {
         return courseService.availableCourses();
     }
 
-    @GetMapping("/courses/getEnrolled")
-    public List<CourseRegistry> getEnrolled() {
-        return courseService.getEnrolled();
-    }
-
-    @PostMapping("/courses/register")
+    @PostMapping("/user/courses/register")
     public String courseRegister(@RequestParam("Name") String Name,
                                  @RequestParam("email") String email,
                                  @RequestParam("courseName") String courseName){
         courseService.enrollCourse(Name, email, courseName);
         return "Congratulation " + Name + " Course Registration Successful for Course: " + courseName;
+    }
+
+    @GetMapping("/")
+    public String homePage() {
+        return "Welcome to Course Registration Home Page";
     }
 }
