@@ -14,15 +14,15 @@ public class UserService {
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
 
     @Autowired
-    MyUserDetailsRepo userDetailsRepo;
+    MyUserDetailsRepo userDetailsRepository;
 
     public String addUser(Users user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userDetailsRepo.save(user);
+        userDetailsRepository.save(user);
         return "{\n\t\"User Added in DB\": \"Success\"\n}";
     }
-
+    // getting user from db
     public List<Users> getUsers() {
-        return userDetailsRepo.findAll();
+        return userDetailsRepository.findAll();
     }
 }
