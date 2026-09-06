@@ -1,9 +1,11 @@
 package com.example.Department_Service.Service;
 
+import com.example.Department_Service.Exceptions.DepartmentNotFoundException;
 import com.example.Department_Service.Model.Department;
 import com.example.Department_Service.Repository.DepartmentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.Department_Service.Exceptions.DepartmentNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +20,11 @@ public class DepartmentService {
     }
 
     public Optional<Department> getDepartmentById(Integer id) {
-        return deptRepo.findById(id);
+        Optional<Department> dept = deptRepo.findById(id);
+        if(dept.isEmpty()){
+            throw new DepartmentNotFoundException("{\n\t\"Department Not Found with given id\": " + id + "\n}");
+        }
+        return Optional.of(dept.get());
     }
 
     public Department addDepartment(Department department) {
