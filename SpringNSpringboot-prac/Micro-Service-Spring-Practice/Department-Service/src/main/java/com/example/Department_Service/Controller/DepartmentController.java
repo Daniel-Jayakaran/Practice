@@ -3,6 +3,8 @@ package com.example.Department_Service.Controller;
 import com.example.Department_Service.Model.Department;
 import com.example.Department_Service.Service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,27 +17,27 @@ public class DepartmentController {
     DepartmentService deptService;
 
     @GetMapping
-    public List<Department> getDepartments() {
-        return deptService.getDepartments();
+    public ResponseEntity<List<Department>> getDepartments() {
+        return new ResponseEntity<>(deptService.getDepartments(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Optional<Department> getDepartmentById(@PathVariable Integer id){
-        return deptService.getDepartmentById(id);
+    public ResponseEntity<Optional<Department>> getDepartmentById(@PathVariable Integer id){
+        return new ResponseEntity<>(deptService.getDepartmentById(id), HttpStatus.FOUND);
     }
 
     @PostMapping
-    public Department addDepartment(@RequestBody Department department) {
-        return deptService.addDepartment(department);
+    public ResponseEntity<Department> addDepartment(@RequestBody Department department) {
+        return new ResponseEntity<>(deptService.addDepartment(department), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public Department updateDepartment(@RequestBody Department department) {
-        return deptService.updateDepartment(department);
+    public ResponseEntity<Department> updateDepartment(@RequestBody Department department) {
+        return new ResponseEntity<>(deptService.updateDepartment(department), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteDepartment(@PathVariable Integer id) {
-        return deptService.deleteDepartment(id);
+    public ResponseEntity<String> deleteDepartment(@PathVariable Integer id) {
+        return new ResponseEntity<>(deptService.deleteDepartment(id), HttpStatus.ACCEPTED );
     }
 }
