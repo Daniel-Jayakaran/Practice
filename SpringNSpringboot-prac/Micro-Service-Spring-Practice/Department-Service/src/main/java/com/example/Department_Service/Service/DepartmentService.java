@@ -31,9 +31,14 @@ public class DepartmentService {
         return deptRepo.save(department);
     }
 
+
+    // Department Updation Services
+
     public Department updateDepartment(Department department) {
         return deptRepo.save(department);
     }
+
+    // Department Deletions services
 
     public String deleteDepartment(Integer id){
         deptRepo.deleteById(id);
