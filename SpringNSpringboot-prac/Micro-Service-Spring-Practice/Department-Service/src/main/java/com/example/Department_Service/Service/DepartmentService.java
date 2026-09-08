@@ -19,6 +19,8 @@ public class DepartmentService {
         return deptRepo.findAll();
     }
 
+    // Throwing Self - Defined DepartmentNotFound Error
+
     public Optional<Department> getDepartmentById(Integer id) {
         Optional<Department> dept = deptRepo.findById(id);
         if(dept.isEmpty()){
