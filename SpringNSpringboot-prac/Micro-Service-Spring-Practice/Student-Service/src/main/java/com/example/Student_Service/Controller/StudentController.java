@@ -13,18 +13,27 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
+
+    // object reference for StudentService
     @Autowired
     private StudentService studentService;
+
+
+    // Get Request for Fetching all Students from DB
 
     @GetMapping
     public ResponseEntity<List<Student>> getAllStudents() {
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.OK);
     }
 
+    // Get Request for fetching a single student from db
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Student>> getStudent(@PathVariable Integer id) {
         return new ResponseEntity<>(studentService.getStudent(id), HttpStatus.ACCEPTED);
     }
+
+    // Post Request to add a Student in DB
 
     @PostMapping
     public ResponseEntity<Student> addStudent(@RequestBody Student student) {
