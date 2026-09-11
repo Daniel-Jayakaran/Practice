@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// model for creating table in database
+
 @Entity
 @Data
 @AllArgsConstructor
